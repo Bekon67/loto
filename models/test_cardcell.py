@@ -1,12 +1,5 @@
-# from models.bag import Bag
-# from models.card import Card
 from models.cardcell import CardCell
-
-
-# from models.cardrow import CardRow
-# from models.host import Host
 from models.keg import Keg
-# from models.player import Player
 
 
 class TestCardCell:
@@ -22,7 +15,7 @@ class TestCardCell:
     def setup(self):
         self.cell_39 = CardCell(39)
         self.cell_40 = CardCell(40)
-        self. keg_40 = Keg(40)
+        self.keg_40 = Keg(40)
 
     def test_get_number(self):
         assert self.cell_40.value == '40'
@@ -34,7 +27,3 @@ class TestCardCell:
         self.cell_40.cross_out(40)
         assert self.cell_40.is_cross_out
         assert not self.cell_39.is_cross_out
-
-#
-# if __name__ == '__main__':
-#     pass

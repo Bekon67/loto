@@ -2,15 +2,16 @@ from models.cardcell import CardCell
 
 
 class CardRow:
-
-    # инициализация
     def __init__(self, line):
         self.cells = [CardCell(item) for item in line]
 
     def __getitem__(self, item):
         return self.cells[item]
 
-    def is_all_cross_out(self):  # полное заполнение строки
+    def __len__(self):
+        return len(self.cells)
+
+    def is_row_cross_out(self):  # полное заполнение строки
         count = 0
         for k in self.cells:
             if str(k) == '--':
@@ -55,3 +56,28 @@ if __name__ == '__main__':
 
     for l in test_row.cells:
         print(l)
+
+    print(len(test_row.cells))
+    print(len(set(test_row.cells[0].value) |
+              set(test_row.cells[1].value) |
+              set(test_row.cells[2].value) |
+              set(test_row.cells[3].value) |
+              set(test_row.cells[4].value) |
+              set(test_row.cells[5].value) |
+              set(test_row.cells[6].value) |
+              set(test_row.cells[7].value) |
+              set(test_row.cells[8].value)))
+    print('*' * 100)
+    print('*' * 100)
+
+    print(test_row.cells[0].value)
+    print(test_row.cells[1].value)
+    print(test_row.cells[2].value)
+    print(test_row.cells[3].value)
+    print(len(test_row.cells[0:5]))
+    print(test_row.cells[2].value == test_row.cells[4].value)
+    card_value = []
+
+    card_value.append([test_row.cells[i].value for i in range(9)])
+    print(*card_value[0])
+    print(len(set(card_value[0])))
