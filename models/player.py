@@ -1,3 +1,7 @@
+class Players:
+
+
+
 class Player:
 
     инициализация

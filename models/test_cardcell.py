@@ -3,19 +3,18 @@ from models.keg import Keg
 
 
 class TestCardCell:
-
-    def test_init(self):
-        cell_none = CardCell(None)
-        assert cell_none.value == '  '
-        assert not cell_none.is_cross_out
-        cell_25 = CardCell(25)
-        assert cell_25.value == '25'
-        assert not cell_25.is_cross_out
-
     def setup(self):
         self.cell_39 = CardCell(39)
         self.cell_40 = CardCell(40)
+        self.cell_none = CardCell(None)
+        self.keg_39 = Keg(39)
         self.keg_40 = Keg(40)
+
+    def test_init(self):
+        assert self.cell_none.value == '  '
+        assert not self.cell_none.is_cross_out
+        assert self.cell_39.value == '39'
+        assert not self.cell_39.is_cross_out
 
     def test_get_number(self):
         assert self.cell_40.value == '40'
@@ -24,6 +23,6 @@ class TestCardCell:
         assert self.cell_40.value == '40'
 
     def test_cross_out(self):
-        self.cell_40.cross_out(40)
+        self.cell_40.cross_out(self.keg_40.number)
         assert self.cell_40.is_cross_out
         assert not self.cell_39.is_cross_out

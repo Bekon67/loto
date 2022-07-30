@@ -1,27 +1,26 @@
-from models.keg import Keg
+from pytest import raises
 from models.bag import Bag
 
 
 class TestBag:
+    def setup(self):
+        self.count = 90
+        self.test_bag = Bag(self.count)
 
     def test_init(self):
-        test_bag = Bag(90)
-        assert test_bag
-        assert len(test_bag) == 90
+        assert self.test_bag
+        assert len(self.test_bag.kegs) == 90
 
-    #
-    # def __len__(self):
-    #     return len(self._numbers)
-    #
-    # def get_random_numbers(self, count):
-    #     result = random.sample(self._numbers, count)
-    #     return result
-    #
-    # def get_next_number(self):
-    #     try:
-    #         result = random.choice(self._numbers)
-    #     except IndexError:
-    #         raise EmptyBagError
-    #     else:
-    #         self._numbers.remove(result)
-    #         return result
+    def init_item(self):
+        assert self.test_bag.kegs[5].number == 6
+        assert self.test_bag.kegs[5] == 6  # TODO Почему? В Host такой тест не проходит
+        assert self.test_bag[5].number == 6
+        assert self.test_bag[5] == 6  # TODO Почему? В Host такой тест не проходит
+        with raises(IndexError):
+            str(self.test_bag.kegs[91])
+        with raises(IndexError):
+            str(self.test_bag[92])
+
+    def test_len(self):
+        assert len(self.test_bag.kegs) == 90
+        assert len(self.test_bag) == 90

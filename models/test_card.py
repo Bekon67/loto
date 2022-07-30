@@ -5,6 +5,12 @@ from models.cardrow import CardRow
 
 
 class TestCard:
+    def setup(self):
+        self.card = Card()
+        self.card.rows = [CardRow([1, 17, None, 34, None, 56, None, None, 81]),
+                          CardRow([None, 19, None, 39, None, 52, None, 79, 83]),
+                          CardRow([7, None, 29, None, 43, 58, None, 77, None])]
+
     def test_init(self):
         test_card = Card()
         assert test_card[0]
@@ -14,16 +20,16 @@ class TestCard:
             str(test_card[3])
         assert str(type(test_card[0])) == "<class 'models.cardrow.CardRow'>"
         # Проверяем, что в карточке  генерируется 15 различных чисел по 5 в строке и пустые ячейки
-        set_card_value = []
+        card_values = []
         for k in range(3):
-            set_card_value.append(set([test_card[k].cells[i].value for i in range(9)]))
-            assert len(set_card_value[k]) == 6
-        assert len(set_card_value[0] | set_card_value[1] | set_card_value[2]) == 16
-
-    def setup(self):
-        self.rows = [CardRow([1, 17, None, 34, None, 56, None, None, 81]),
-                     CardRow([None, 19, None, 39, None, 52, None, 79, 83]),
-                     CardRow([7, None, 29, None, 43, 56, None, 77, None])]
+            card_values.append(set([str(test_card[k].cells[i]) for i in range(9)]))
+            assert len(card_values[k]) == 6
+        assert len(card_values[0] | card_values[1] | card_values[2]) == 16
+        card_values = []
+        for k in range(3):
+            card_values.append(set([str(self.card[k].cells[i]) for i in range(9)]))
+            assert len(card_values[k]) == 6
+        assert len(card_values[0] | card_values[1] | card_values[2]) == 16
 
     def test_is_card_cross_out(self):
         test_card = Card()
