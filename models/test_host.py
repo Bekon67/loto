@@ -25,15 +25,15 @@ class TestHost:
             str(self.test_bag[92])
 
     def test_get_next_keg(self):
-        result = self.test_host.get_next_keg(self.test_bag)
+        next_keg = self.test_host.get_next_keg(self.test_bag)
         assert len(self.test_bag.kegs) == 89
         assert len(self.test_bag) == 89
-        assert result not in self.test_bag
-        assert result.number in range(1, self.count + 1)
+        assert next_keg not in self.test_bag
+        assert next_keg.number in range(1, self.count + 1)
         for _ in range(88):
-            result = self.test_host.get_next_keg(self.test_bag)
+            next_keg = self.test_host.get_next_keg(self.test_bag)
         assert len(self.test_bag) == 1
-        result = self.test_host.get_next_keg(self.test_bag)
+        next_keg = self.test_host.get_next_keg(self.test_bag)
         assert not len(self.test_bag)
         with raises(EmptyBagError):
-            result = self.test_host.get_next_keg(self.test_bag)
+            next_keg = self.test_host.get_next_keg(self.test_bag)
