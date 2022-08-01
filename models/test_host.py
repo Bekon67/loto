@@ -47,7 +47,7 @@ class TestHost:
             #     return list_winner
 
     def test_announces_results_round(self):
-        list_players = [Player('one'), Player('two')]
+        list_players = [Player('one', 1), Player('two', 1)]
         list_winner = self.test_host.announces_results_round(list_players)
         assert not list_winner
         count = 0
@@ -80,6 +80,6 @@ class TestHost:
     #     return dict_mistake
 
     def test_mistakes_players(self):
-        list_players = [Player('one'), Player('two')]
+        list_players = [Player('one', 1), Player('two', 1)]
 
 

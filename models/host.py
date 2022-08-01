@@ -29,17 +29,17 @@ class Host:
         list_winner = [player.name for player in players if player.card.is_card_cross_out()]
         return list_winner
 
-    def mistakes_players(self, players, bag):  # проверка, где накосячили человек и Валенок
-        dict_mistake = {}
-        for player in players:
-            mistake_player = []
-            for keg in bag:
-                for row in player.card.rows:
-                    for cell in row.cells:
-                        if str(cell) == str(keg):
-                            mistake_player.append(keg.number)
-            dict_mistake[player] = mistake_player
-        return dict_mistake
+    # def mistakes_players(self, players, bag):  # проверка, где накосячили человек и Валенок
+    #     dict_mistake = {}
+    #     for player in players:
+    #         mistake_player = []
+    #         for keg in bag:
+    #             for row in player.card.rows:
+    #                 for cell in row.cells:
+    #                     if str(cell) == str(keg) and :
+    #                         mistake_player.append(keg.number)
+    #         dict_mistake[player] = mistake_player
+    #     return dict_mistake
 
 # def announces_remaining_numbers(self): # объявить отставшиеся бочонки в мешке ОНИ ИЗВЕСТНЫ!!!
 

@@ -2,9 +2,9 @@ from models.card import Card
 
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, profile):
         self.name = name
-        # self.profile = 1
+        self.profile = profile
         self.card = Card()
 
     def __str__(self):
