@@ -18,6 +18,7 @@ class Card:
     def __getitem__(self, item):
         return self.rows[item]
 
+
     def printcard(self):  # вывод карточки в терминал
         print('*' * 27)
         print(*self.rows[0])

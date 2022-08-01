@@ -12,6 +12,7 @@ class CardCell:
     def __str__(self):
         return '--' if self.is_cross_out else self.value
 
+
     # # зачеркивание цифры правильно
     def cross_out(self, keg_number):
         if self.value == str(keg_number):

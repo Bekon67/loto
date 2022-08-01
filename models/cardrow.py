@@ -24,6 +24,7 @@ if __name__ == '__main__':
     test_row2 = CardRow([None, 19, None, 39, None, 52, None, 79, 83])
     test_row3 = CardRow([7, None, 29, None, 43, 56, None, 77, None])
 
+
     print(len(test_row.cells))
     print(range(len(test_row.cells)))
 
